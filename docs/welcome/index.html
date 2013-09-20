@@ -8,9 +8,10 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="chrome=1">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-        <title>pace.js</title>
+        <title>PACE — Automatic page load progress bars</title>
         <link rel="icon" href="http://static.hubspot.com/favicon.ico">
         <script type="text/javascript" src="//use.typekit.net/jbn8qxr.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
         <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script src="/pace/docs/lib/color.js"></script>
@@ -24,7 +25,7 @@
                 background: #29d;
             }
 
-            a, a:hover, a:active {
+            a, a:hover, a:active, .header .title .title2:before {
                 color: #29d;
             }
         </style>
@@ -178,6 +179,32 @@
                 position: absolute;
                 top: 0;
             }
+            .header .title .title2:before {
+                position: absolute;
+                top: 16.5%;
+                bottom: 34%;
+                left: 2%;
+                right: 2%;
+                content: "Progress Automatically. Certain to Entertain.";
+                font-size: 1rem;
+                line-height: 1.3em;
+                padding: 1rem 15rem 1rem 1rem;
+                background: #fff;
+                opacity: 0;
+                text-align: left;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                -webkit-transform: translateY(-15px);
+                -webkit-transition: all .3s;
+                -moz-transition: all .3s;
+                transition: all .3s;
+                z-index: 10;
+            }
+            .header .title .title2:hover:before {
+                opacity: 1;
+                -webkit-transform: translateY(0px);
+            }
             .header .title .char1 { left: .5%; width: 22%; }
             .header .title .char2 { left: 25%; width: 22%; }
             .header .title .char3 { left: 51%; width: 22%; }
@@ -282,6 +309,7 @@
             input[type="color"] {
                 width: 15rem;
                 height: 2.3rem;
+                font-size: 1rem;
                 position: relative;
                 font-family: inherit;
                 cursor: pointer;
@@ -362,6 +390,9 @@
             .block {
                 padding: 10px 0;
             }
+            .color-label {
+                display: none;
+            }
         </style>
 
         <div class="section colored">
@@ -387,7 +418,8 @@
                 <p><a class="button" href="https://raw.github.com/HubSpot/pace/v0.4.2/pace.min.js">Pace.js</a></p>
                 <br/>
                 <h2>Themes</h2>
-                <input type="color" value="#2299dd"></input>
+                <label class="color-label" for="color-select">Enter a color:</label>
+                <input type="color" value="#2299dd" id="color-select"></input>
                 <div class="themes"></div>
                 <p class="block">Submit a theme! <a href="https://github.com/HubSpot/pace">Fork us on GitHub</a></p>
                 <p class="block"><a class="button" href="http://github.hubspot.com/pace/">Documentation</a></p>
@@ -397,6 +429,9 @@
                 <br/>
                 <script>
                     $(function(){
+                        if (!Modernizr.inputtypes.color)
+                            $('.color-label').show();
+
                         var themes = [{
                             name: 'minimal',
                             title: 'Minimal',
@@ -494,7 +529,7 @@
                                 var color = $(this).val();
                                 updateColor(color);
 
-                                var css = '.section.colored, a.button { background: ' + color + '; } a, a:hover, a:active { color: ' + color + '; }';
+                                var css = '.section.colored, a.button { background: ' + color + '; } a, a:hover, a:active, .header .title .title2:before { color: ' + color + '; }';
                                 if ($('html').hasClass('ie8-and-less')) {
                                     $('#app-colors').get(0).styleSheet.cssText = css
                                 } else {
@@ -555,6 +590,16 @@
             #github_stars:hover {
                 -webkit-filter: none;
             }
+            .hn-share-iframe {
+                position: fixed;
+                bottom: 36px;
+                left: 225px;
+                -webkit-filter: grayscale(1) contrast(1.3);
+                z-index: 3;
+            }
+            .hn-share-iframe:hover {
+                -webkit-filter: none;
+            }
         </style>
         <div id="retweet_button">
             <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://github.hubspot.com/pace/docs/welcome" data-text="pace.js - Add an automatic page load progress bar to your site" data-count="horizontal" data-via="HubSpotDev">Tweet</a>
@@ -563,6 +608,16 @@
         <div id="github_stars">
             <iframe src="http://ghbtns.com/github-btn.html?user=HubSpot&amp;repo=pace&amp;type=watch&amp;count=true&amp;size=small" allowtransparency="true" frameborder="0" scrolling="0" width="200" height="20"></iframe>
         </div>
+        <a href="http://news.ycombinator.com/submit" class="hn-share-button" data-title="Automatically Add Loading Bars to Your Website" data-url="http://github.hubspot.com/pace/docs/welcome/?hn">Vote on HN</a>
+
+        <script>
+            (function(d, t) {
+                var g = d.createElement(t),
+                    s = d.getElementsByTagName(t)[0];
+                g.src = '//hnbutton.appspot.com/static/hn.min.js';
+                s.parentNode.insertBefore(g, s);
+            }(document, 'script'));
+        </script>
 
         <!-- Start of Async HubSpot Analytics Code -->
         <script type="text/javascript">
