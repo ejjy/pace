@@ -68,7 +68,7 @@
       box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.6);
     }
     input[type="color"]::after {
-      content: "Choose a color";
+      content: "Click to choose a color";
       display: block;
       text-align: center;
       position: absolute;
@@ -152,6 +152,7 @@
         var $color = $('input[type="color"]');
 
         var cssCache = {};
+        var themeCache = {};
         var initFrame = function(frame, color){
           if ($color.val() != '#2299dd')
             color = $color.val();
@@ -164,13 +165,20 @@
             context.color = color;
 
           var themeName = $(frame).data('theme')
-          loadTheme(themeName, function(theme){
+          var next = function(theme){
+            themeCache[themeName] = theme;
+
             body = compileTheme(theme, context);
 
             cssCache[themeName] = body;
 
             $styleEl.html(body);
-          });
+          };
+
+          if (themeCache[themeName])
+            next(themeCache[themeName]);
+          else
+            loadTheme(themeName, next);
 
           $(frame).contents().find('.pace').addClass('pace-active');
         };
