@@ -679,11 +679,14 @@ SOURCE_KEYS =
   eventLag: EventLagMonitor
 
 <span class="keyword">do</span> <span class="function"><span class="title">init</span></span> = -&gt;
-  sources = options.extraSources ? []
+  sources = []
 
   <span class="keyword">for</span> type <span class="keyword">in</span> [<span class="string">'ajax'</span>, <span class="string">'elements'</span>, <span class="string">'document'</span>, <span class="string">'eventLag'</span>]
     <span class="keyword">if</span> options[type] <span class="keyword">isnt</span> <span class="literal">false</span>
-      sources.push <span class="keyword">new</span> SOURCE_KEYS[type](options[type])
+      sources.push SOURCE_KEYS[type](options[type])
+
+  <span class="keyword">for</span> source <span class="keyword">in</span> options.extraSources ? []
+    sources.push source(options)
 
   bar = <span class="keyword">new</span> Bar</pre></div></div>
             

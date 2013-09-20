@@ -24,15 +24,15 @@
         </div>
     </div>
 </div>
-<div class="hs-doc-marquee"><div class="hs-page-width-normal"><div class="row-fluid"><div class="span6"><h1>pace</h1><h3 class="hs-doc-marquee-description">Automatic page load progress bar</h3><p class="hs-doc-marquee-release">0.4.0</p><p class="hs-doc-marquee-stars"><iframe src="http://ghbtns.com/github-btn.html?user=HubSpot&repo=pace&type=watch&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="240" height="30"></iframe></p></div><div class="span6"><div class="hs-doc-marquee-buttons"><a class="hs-doc-marquee-button" href="http://github.com/HubSpot/pace">Star on GitHub</a><a class="hs-doc-marquee-button" href="http://github.com/HubSpot/pace/archive/v0.4.0.zip">Download ZIP (v0.4.0)</a></div></div></div></div></div><div class="hs-page-width-normal"><div class="row-fluid"><div class="span3"><div class="hs-doc-sidenav"><nav><ul class="hs-public-sidenav"><li class=""><a href="">Home</a></li><li><b>Annotated source</b></li><li><a target="_blank" href="source/pace.html">pace.coffee</a></li></ul></nav></div></div><div class="span9"><div class="hs-doc-content"><h1>pace</h1>
-<p>Include <a href="https://raw.github.com/HubSpot/pace/v0.4.0/pace.min.js">pace.js</a> and the 
+<div class="hs-doc-marquee"><div class="hs-page-width-normal"><div class="row-fluid"><div class="span6"><h1>pace</h1><h3 class="hs-doc-marquee-description">Automatic page load progress bar</h3><p class="hs-doc-marquee-release">0.4.1</p><p class="hs-doc-marquee-stars"><iframe src="http://ghbtns.com/github-btn.html?user=HubSpot&repo=pace&type=watch&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="240" height="30"></iframe></p></div><div class="span6"><div class="hs-doc-marquee-buttons"><a class="hs-doc-marquee-button" href="http://github.com/HubSpot/pace">Star on GitHub</a><a class="hs-doc-marquee-button" href="http://github.com/HubSpot/pace/archive/v0.4.1.zip">Download ZIP (v0.4.1)</a></div></div></div></div></div><div class="hs-page-width-normal"><div class="row-fluid"><div class="span3"><div class="hs-doc-sidenav"><nav><ul class="hs-public-sidenav"><li class=""><a href="">Home</a></li><li><b>Annotated source</b></li><li><a target="_blank" href="source/pace.html">pace.coffee</a></li></ul></nav></div></div><div class="span9"><div class="hs-doc-content"><h1>pace</h1>
+<p>Include <a href="https://raw.github.com/HubSpot/pace/v0.4.1/pace.min.js">pace.js</a> and the 
 <a href="http://github.hubspot.com/pace/docs/themes/">theme</a> css of your choice on your page
 (as early as is possible), and you&#39;re done!</p>
 <p>If you use AMD or Browserify, require in pace.js and call <code>pace.start()</code> as early in
 the loading process as is possible.</p>
 <h2>Configuration</h2>
-<p>Pace is fully automatic, no configuration is necessary.  If you do need to make some tweaks, here&#39;s
-how:</p>
+<p>Pace is fully automatic, no configuration is necessary to get started.</p>
+<p>If you would like to make some tweaks, here&#39;s how:</p>
 <p>You can set <code>window.paceOptions</code> before bringing in the file:</p>
 <pre><code class="lang-javascript">paceOptions = {
   <span class="comment">// Disable the 'elements' source</span>
@@ -51,7 +51,7 @@ how:</p>
 to get you started.  Specify the theme of your choice as an option, and
 include the appropriate css file.</p>
 <h2>Collectors</h2>
-<p>Pace includes four default collectors:</p>
+<p>Collectors are the bits of code which gather progress information.  Pace includes four default collectors:</p>
 <ul>
 <li><p>Ajax</p>
 <p>Monitors all ajax requests on the page</p>
@@ -75,7 +75,7 @@ include the appropriate css file.</p>
     sources: [<span class="string">'.my-page'</span>]
   }
 };</code></pre>
-<p>Add your own instances to <code>paceOptions.extraSources</code> to add more sources.  Each source should either
+<p>Add your own classes to <code>paceOptions.extraSources</code> to add more sources.  Each source should either
 have a <code>.progress</code> property, or a <code>.elements</code> property which is a list of objects with
 <code>.progress</code> properties.  Pace will automatically handle all scaling to make the progress
 changes look smooth to the user.</p>
