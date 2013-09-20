@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html>
+<!--[if lt IE 7]> <html class="no-js ie6 ie9-and-less ie8-and-less ie7-and-less" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 ie9-and-less ie8-and-less ie7-and-less" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 ie9-and-less ie8-and-less" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie9 ie9-and-less" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -12,14 +16,27 @@
         <script src="/pace/docs/lib/color.js"></script>
         <script src="/pace/docs/lib/themes.js"></script>
         <script src="/pace/pace.js"></script>
-        <link href="/pace/pace-theme-flash.css" rel="stylesheet" />
+        <link href="/pace/docs/resources/flash-white.css" rel="stylesheet" />
     </head>
     <body>
+        <style id="app-colors">
+            .section.colored, a.download-src-link, .button {
+                background: #29d;
+            }
+
+            a, a:hover, a:active {
+                color: #29d;
+            }
+        </style>
         <style>
             html, body {
                 margin: 0;
                 height: 100%;
                 color: #000;
+            }
+
+            a, a:hover, a:active {
+                text-decoration: none
             }
 
             body {
@@ -169,23 +186,22 @@
             .section {
                 position: relative;
                 height: 100%;
-                padding-top: 2rem;
-                padding-bottom: 2rem;
+                padding-top: 1rem;
+                padding-bottom: 1rem;
                 -webkit-box-sizing: border-box;
                 -moz-box-sizing: border-box;
                 box-sizing: border-box;
             }
 
-            .section.blue {
-                background: #29d;
+            .section.colored {
                 color: #fff;
             }
 
-            .section.blue .header .title .title2 {
+            .section.colored .header .title .title2 {
                 color: #fff;
             }
 
-            .section.blue .header .subtitle {
+            .section.colored .header .subtitle {
                 color: #fff;
             }
 
@@ -222,7 +238,7 @@
                 bottom: 30px;
             }
 
-            .section.blue .down-arrow {
+            .section.colored .down-arrow {
                 color: rgba(255, 255, 255, .5);
             }
 
@@ -233,7 +249,6 @@
             .themes {
                 overflow: hidden;
                 text-align: center;
-                padding-bottom: 60px;
             }
             .theme {
                 width: 46%;
@@ -321,21 +336,19 @@
             .page {
                 text-align: center;
                 max-width: 28rem;
-                padding; 0 10px;
+                padding: 0 10px;
                 margin: 0 auto;
             }
 
             .themes a, .themes a:hover, .themes a:active {
-                color: #29d;
                 text-decoration: none;
                 font-size: .7rem;
                 text-transform: uppercase;
                 letter-spacing: 2px;
             }
 
-            a.download-src-link {
+            a.button {
                 padding: 0.5rem 1rem;
-                background: #29d;
                 color: #fff;
                 cursor: pointer;
                 font-size: 1rem;
@@ -343,16 +356,22 @@
                 letter-spacing: .1em;
                 text-decoration: none;
             }
+            .themes-pitch {
+                padding: 15px;
+            }
+            .block {
+                padding: 10px 0;
+            }
         </style>
 
-        <div class="section blue">
+        <div class="section colored">
             <div class="header">
                 <div class="title">
                     <h1 class="title1"><span class="char1">p</span><span class="char2">a</span><span class="char3">c</span><span class="char4">e</span></h1>
                     <h1 class="title2"><span class="char1">p</span><span class="char2">a</span><span class="char3">c</span><span class="char4">e</span></h1>
                 </div>
                 <div class="subtitle">
-                    <h3>Loading has never been this easy.</h3>
+                    <h3>Automatic page load progress bar</h3>
                 </div>
             </div>
             <div class="down-arrow">⇪</div>
@@ -360,20 +379,22 @@
 
         <div class="section">
             <div class="page">
-                <div class="up-arrow">⇪</div>
-                <h2>Download</h2>
-                <p><a class="download-src-link" href="https://raw.github.com/HubSpot/pace/v0.4.1/pace.min.js">Pace.js</a></p>
-                <br/>
                 <h2>What is Pace?</h2>
-                <p style="text-align: left">Pace is an automatic page load progress bar. Include pace.js and the theme css of your choice, and you're done. Pace does all of the work for you. See themes below.</p>
+                <p style="text-align: left">Include pace.js and the theme css of your choice, and you get a beautiful progress indicator for your page load and ajax navigation.</p>
+                <p style="text-align: left">No need to hook into any of your code, progress is detected automatically.</p>
+                <br/>
+                <h2>Download</h2>
+                <p><a class="button" href="https://raw.github.com/HubSpot/pace/v0.4.2/pace.min.js">Pace.js</a></p>
+                <br/>
                 <h2>Themes</h2>
                 <input type="color" value="#2299dd"></input>
                 <div class="themes"></div>
+                <p class="block">Submit a theme! <a href="https://github.com/HubSpot/pace">Fork us on GitHub</a></p>
+                <p class="block"><a class="button" href="http://github.hubspot.com/pace/">Documentation</a></p>
                 <br/>
-                <p>Want to submit a theme?</p>
-                <p><a href="https://github.com/HubSpot/pace">Fork us on GitHub</a></p>
-                <h2>Documentation</h2>
-                <p>Check out the <a href="http://github.hubspot.com/pace/">Pace Documentation</a>.</p>
+                <p style="font-size: 0.6rem"><a href="http://dev.hubspot.com">HubSpot</a></p>
+                <br/>
+                <br/>
                 <script>
                     $(function(){
                         var themes = [{
@@ -470,7 +491,15 @@
                             });
 
                             $color.on('change keyup', function(){
-                                updateColor($(this).val());
+                                var color = $(this).val();
+                                updateColor(color);
+
+                                var css = '.section.colored, a.button { background: ' + color + '; } a, a:hover, a:active { color: ' + color + '; }';
+                                if ($('html').hasClass('ie8-and-less')) {
+                                    $('#app-colors').get(0).styleSheet.cssText = css
+                                } else {
+                                    $('#app-colors').html(css);
+                                }
                             });
 
                             $('a.download-link').click(function(e){
